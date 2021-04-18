@@ -1,2 +1,11 @@
 venv/
-**/__pycache__
+__pycache__/
+*.py[cod]
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+**/__pycache__/**
