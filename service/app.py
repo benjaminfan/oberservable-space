@@ -28,7 +28,8 @@ def handle_agents():
 def handle_agent_by_id(id):
     if request.method == 'GET':
         agent_data = db.agents.get(id, False)
-        if agent_data is False: return jsonify("Agent {} not found".format(id)), 400
+        if agent_data is False:
+            return jsonify("Agent {} not found".format(id)), 400
         return jsonify(agent_data)
 
     if request.method == 'PUT':
@@ -39,6 +40,7 @@ def handle_agent_by_id(id):
         except AttributeError as e:
             return jsonify({"error": "{}".format(e)}), 400
 
+
 @app.route('/api/agent/<int:id>/customers/', methods=['GET'])
 def view_agent_customer_data(id):
     try:
@@ -46,11 +48,13 @@ def view_agent_customer_data(id):
     except KeyError as e:
         return jsonify({"error": "Agent {} not found. ".format(e)}), 400
 
+
 @app.route('/api/customer/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def handle_customer_by_id(id):
     if request.method == 'GET':
         customer_data = db.customers.get(id, False)
-        if customer_data is False: return jsonify("Customer {} not found".format(id)), 400
+        if customer_data is False:
+            return jsonify("Customer {} not found".format(id)), 400
         return jsonify(customer_data)
 
     if request.method == 'PUT':

@@ -7,8 +7,10 @@ class Config(object):
     DEBUG = True
     DEVELOPMENT = True
 
+
 class Mock(Config):
     USE_MONGO = False
+
 
 class DB(Config):
     USE_MONGO = True

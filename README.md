@@ -7,7 +7,7 @@
 
 ## Steps to Run
 
-1. Install Dockear
+1. Install Docker
 1. ```bash
    make build
    ```

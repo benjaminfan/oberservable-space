@@ -23,7 +23,7 @@ class MockCRUD:
 
     @staticmethod
     def index_by_key(collection, key='_id') -> dict:
-        return {doc[key] : doc for doc in collection}
+        return {doc[key]: doc for doc in collection}
 
     @staticmethod
     def upsert(collection, data, schema, new_insert=True):
@@ -35,8 +35,11 @@ class MockCRUD:
         except SchemaError as e:
             raise AttributeError("{}".format(e))
         except AttributeError:
-            if new_insert: raise AttributeError(f'Cannot create duplicate id {data.get("_id")}.')
-            raise AttributeError(f'Id  {data.get("_id")} has not been created.')
+            if new_insert:
+                raise AttributeError(
+                    f'Cannot create duplicate id {data.get("_id")}.')
+            raise AttributeError(
+                f'Id  {data.get("_id")} has not been created.')
 
     @staticmethod
     def update_user(_id, new_data, collection) -> dict:
@@ -55,13 +58,13 @@ class MockCRUD:
 
     def update_customer(self, _id, customer_data):
         updated_customer = self.update_user(_id, customer_data, self.customers)
-        self.upsert(self.customers, updated_customer, customer_schema, new_insert=False)
+        self.upsert(self.customers, updated_customer,
+                    customer_schema, new_insert=False)
 
     def get_customers_per_agent(self, agent_id: int) -> list:
         customers_indexed_by_agent = {}
         # if this gets expensive, we can store in a cache and use compression/filter
         for cust in self.customers.values():
-            customers_indexed_by_agent.setdefault(cust['agent_id'], []).append(cust)
+            customers_indexed_by_agent.setdefault(
+                cust['agent_id'], []).append(cust)
         return customers_indexed_by_agent[agent_id]
-
-
