@@ -7,7 +7,7 @@
 1. `_id` is always unique and immutable  
 
 ## Steps to Run
-#### Windows users: recomend running with cygwin or MinGW
+###### Windows users: recommended running with cygwin or MinGW for `make`.   Alternatively you can ship this on k8s with `minikube` 
 1. Install Docker
 1. ```bash
    make build
@@ -20,6 +20,13 @@
     ```bash
     curl http://localhost:8003/api/agent/101/
     ```
+You can also run the app locally but requires additional steps
+1. (Optional) Create a `virtualenv` or `venv` 
+   ```bash
+    py -3 -m venv venv
+    ```
+1. Install required modules with `pip install requirements.txt`
+2. Run the app with ngnix and gunicorn `gunicorn --chdir service app:app -w 2 --threads 2 -b 0.0.0.0:8003`
 
 ## Endpoints
 - `/api/agents`
