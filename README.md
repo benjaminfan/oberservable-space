@@ -7,7 +7,7 @@
 1. `_id` is always unique and immutable  
 
 ## Steps to Run
-
+#### Windows users: recomend running with cygwin or MinGW
 1. Install Docker
 1. ```bash
    make build
@@ -23,8 +23,8 @@
 
 ## Endpoints
 - `/api/agents`
-    - GET
-    - POST
+    - GET - Return List of all Agents
+    - POST - Add New Agent
       - Example Body 
       ```json
       {
@@ -41,8 +41,8 @@
         "zipCode": "12938"
       }
 - `/api/agent/{id}`
-    - GET
-    - PUT
+    - GET - Retrieve all Agent Details by agent’s INT ID
+    - PUT - Update Any/All Fields by Agent’s INT ID
       - Example Body 
       ```json
       {
@@ -50,10 +50,10 @@
         "address": "Updated Address",
       }
 - `/api/agent/{id}/customers`
-  - GET - a list of customers that the agent is responsible for
+  - GET - List all customers associated with a given Agent's INT ID
 - `/api/customers`
-  - GET - All the customers information
-  - POST 
+  - GET - Return all customer data from our system.
+  - POST - Add New Customer
         - Example Body 
       ```json
       {
@@ -84,15 +84,15 @@
         ]
       }
 - `/api/customer/{id}`
-    - GET
-    - PUT
+    - GET- Retrieve all Customer Details by customer's INT ID
+    - PUT - Provide ability to Update Customer Information
        - Example Body 
       ```json
       {
         "_id": 8463,
-        "isActive": true,
+        "isActive": false,
       }
-    - DELETE
+    - DELETE - Delete Existing Customer
 
    
 ## Future Improvements
