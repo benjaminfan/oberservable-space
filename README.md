@@ -97,3 +97,5 @@
    
 ## Future Improvements
 1. Finish mongoDB middleware
+1. Tests with schema
+1. Pipeline
